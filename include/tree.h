@@ -9,7 +9,7 @@ static int firstRank   = 1;
 
 enum treeErrors {
     CORRECT_TREE        = 0,
-    NULL_PTR            = 1,
+    NODE_NULL_PTR       = 1,
     NOT_ENOUGH_MEMORY   = 2,
     ERROR_OF_OPEN_FILE  = 3
 };
@@ -22,7 +22,11 @@ struct node_t {
 
 void printNode( const node_t* node );
 
-treeErrors initNode( node_t* node );
+void printTheSortedTree( const node_t* node );
+
+node_t* initNode( treeElem_t element );
+
+treeErrors insertNode( node_t* root, treeElem_t element );
 
 void destroyNode( node_t* node );
 

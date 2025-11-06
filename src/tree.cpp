@@ -10,31 +10,68 @@ void printNode( const node_t* node ){
     printf( "(" );
     printf( treeValueFormat " ", node->data );
 
-    if( node->left ){
+    if( (node->left)->left && (node->left)->right ){
         printNode( node->left );
     }
-    if( node->right ){
+    if( (node->right)->left && (node->right)->right ){
         printNode( node->right );
     }
 
     printf( ")" );
 }
 
-treeErrors initNode( node_t* node ){
+void printTheSortedTree( const node_t* node ){
     assert( node );
 
-    node->data = ( treeElem_t )0;
-    node->left = ( node_t* )calloc( oneStruct, sizeof( node_t* ) );
-    if( node->left == NULL ){
-        return NOT_ENOUGH_MEMORY;
+    if( (node->left)->left && (node->left)->right ){
+        printTheSortedTree( node->left );
     }
-    node->left = NULL;
 
-    node->right = ( node_t* )calloc( oneStruct, sizeof( node_t* ) );
-    if( node->right == NULL ){
-        return NOT_ENOUGH_MEMORY;
+    printf( treeValueFormat " ", node->data );
+
+    if( (node->right)->left && (node->right)->right ){
+        printTheSortedTree( node->right );
     }
-    node->right = NULL;
+}
+
+node_t* initNode( treeElem_t element ){
+
+    node_t* node = (node_t*)calloc( oneStruct, sizeof( node_t ) );
+    if( node == NULL ){
+        return NULL;
+    }
+
+    node->data = element;
+
+    node->left = (node_t*)calloc( oneStruct, sizeof( node_t ) );
+    if( node->left == NULL ){
+        return NULL;
+    }
+
+    node->right = (node_t*)calloc( oneStruct, sizeof( node_t ) );
+    if( node->right == NULL ){
+        return NULL;
+    }
+
+    return node;
+}
+
+treeErrors insertNode( node_t* root, treeElem_t element ){
+    if( root == NULL ){
+        return NODE_NULL_PTR;
+    }
+
+    node_t** nodePtr= &root;
+    while( (*nodePtr)->right && (*nodePtr)->left ){
+        if( element <= (*nodePtr)->data ){
+            nodePtr = &( (*nodePtr)->left );
+        }
+        else{
+            nodePtr = &( (*nodePtr)->right );
+        }
+    }
+
+    *(nodePtr) = initNode( element );
 
     return CORRECT_TREE;
 
@@ -43,17 +80,20 @@ treeErrors initNode( node_t* node ){
 void destroyNode( node_t* node ){
     assert( node );
 
+    //printf( "\n\nnode = %p\nData = "  treeValueFormat "\nleft prt = %p\nright ptr = %p\n", node, node->data, node->left, node->right );
+
     node->data = ( treeElem_t )0;
 
     if( node->left  ){
         destroyNode( node->left );
     }
-    else if( node->right ){
+    if( node->right ){
         destroyNode( node->right );
     }
 
-    /*free( node->left );
-    free( node->right );*/
+    //printf( "\nnode %p befor delete\n", node );
+    free( node );
+    node = NULL;
 }
 
 void dumpNode( node_t* node, int rank, FILE* treeFile ){
@@ -123,6 +163,8 @@ treeErrors dumpTree( node_t* node ){
     fclose( treeFile );
 
     system("dot treeDump.txt -Tpng -o treeDump.png");
+
+    
 
     return CORRECT_TREE;
 }
