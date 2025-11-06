@@ -164,7 +164,61 @@ treeErrors dumpTree( node_t* node ){
 
     system("dot treeDump.txt -Tpng -o treeDump.png");
 
-    
+    //HTML
+
+    FILE* htmlDump = fopen( "treeDump.html", "w" );
+    if( htmlDump == NULL ){
+        return ERROR_OF_OPEN_FILE;
+    }
+
+    fprintf( htmlDump, "<pre>\n"
+                       "<h1> <font color=red> TREE DUMP </font>  </h1>"
+                       "\n\n"
+                       "<h1> TREE { %s:%s:%d } </h1>\n\n", __FILE__, __func__, __LINE__ );
+
+    fprintf( htmlDump, "<h2 style = \"color: green;\">tree: \n");
+    printNodeInFile( node, htmlDump );
+
+
+    fprintf( htmlDump, "</h2>\n\n<h2 style = \"color: orange;\">sorted tree: \n" );
+    printTheSortedTreeInFile( node, htmlDump );
+
+    fprintf( htmlDump, "</h2>\n\n<h1>Image:</h1>\n"
+                       "<img src=treeDump.png width = 2000px>\n\n");
+
+    fclose( htmlDump );
 
     return CORRECT_TREE;
+}
+
+static void printNodeInFile( const node_t* node, FILE* fileForPrint ){
+    assert( node );
+    assert( fileForPrint );
+
+    fprintf( fileForPrint, "(" );
+    fprintf( fileForPrint, treeValueFormat " ", node->data );
+
+    if( (node->left)->left && (node->left)->right ){
+        printNodeInFile( node->left, fileForPrint);
+    }
+    if( (node->right)->left && (node->right)->right ){
+        printNodeInFile( node->right, fileForPrint );
+    }
+
+    fprintf( fileForPrint, ")" );
+}
+
+static void printTheSortedTreeInFile( const node_t* node, FILE* fileForPrint ){
+    assert( node );
+    assert( fileForPrint );
+
+    if( (node->left)->left && (node->left)->right ){
+        printTheSortedTreeInFile( node->left, fileForPrint);
+    }
+
+    fprintf( fileForPrint, treeValueFormat " ", node->data );
+
+    if( (node->right)->left && (node->right)->right ){
+        printTheSortedTreeInFile( node->right, fileForPrint);
+    }
 }

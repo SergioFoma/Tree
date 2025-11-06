@@ -34,4 +34,8 @@ treeErrors dumpTree( node_t* node );
 
 void dumpNode( node_t* node, int rank, FILE* treeFile );
 
+static void printNodeInFile( const node_t* node, FILE* fileForWrite );
+
+static void printTheSortedTreeInFile( const node_t* node, FILE* fileForPrint );
+
 #endif

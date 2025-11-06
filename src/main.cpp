@@ -31,7 +31,6 @@ int main(){
     printNode( node_1 );
     printf( "\n" );
 
-
     dumpTree( node_1 );
 
     printf( "\nThe sorted tree:\n\n" );
