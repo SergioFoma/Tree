@@ -2,93 +2,107 @@ digraph G{
 	rankdir = TB;
 	node[shape = "hexagon", color = "black", fontsize = 14, shape = record ];
 	edge[color = "red", fontsize = 12];
-	node73848bc00020 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x73848bc00020 </td></tr> <tr><td> elem = 10</td></tr> <tr><td> 0x503000000040 </td></tr><tr><td> 0x503000000070 </td></tr></table>>;color = "red"];
+	node7af44e200020 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x7af44e200020 </td></tr> <tr><td> elem = 2147483647</td></tr> <tr><td> 0x503000000040 </td></tr><tr><td> 0x503000000070 </td></tr></table>>;color = "red"];
 	{
 		rank = 1;
-		node73848bc00020;
+		node7af44e200020;
 	}
 		node503000000040;
-	node73848bc00020->node503000000040[color = "orange"];
-	node503000000040 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x503000000040 </td></tr> <tr><td> elem = 5</td></tr> <tr><td> 0x503000000100 </td></tr><tr><td> 0x503000000130 </td></tr></table>>;color = "red"];
+	node7af44e200020->node503000000040[color = "orange"];
+	node503000000040 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x503000000040 </td></tr> <tr><td> elem = 10</td></tr> <tr><td> 0x5030000000a0 </td></tr><tr><td> 0x5030000000d0 </td></tr></table>>;color = "red"];
 	{
 		rank = 2;
 		node503000000040;
 	}
-		node503000000100;
-	node503000000040->node503000000100[color = "orange"];
-	node503000000100 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x503000000100 </td></tr> <tr><td> elem = 3</td></tr> <tr><td> 0x503000000160 </td></tr><tr><td> 0x503000000190 </td></tr></table>>;color = "red"];
+		node5030000000a0;
+	node503000000040->node5030000000a0[color = "orange"];
+	node5030000000a0 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x5030000000a0 </td></tr> <tr><td> elem = 5</td></tr> <tr><td> 0x503000000160 </td></tr><tr><td> 0x503000000190 </td></tr></table>>;color = "red"];
 	{
 		rank = 3;
-		node503000000100;
+		node5030000000a0;
 	}
 		node503000000160;
-	node503000000100->node503000000160[color = "orange"];
-	node503000000160 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x503000000160 </td></tr> <tr><td> elem = 0</td></tr> <tr><td> NULL </td></tr><tr><td> NULL </td></tr></table>>;color = "red"];
+	node5030000000a0->node503000000160[color = "orange"];
+	node503000000160 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x503000000160 </td></tr> <tr><td> elem = 3</td></tr> <tr><td> 0x5030000001c0 </td></tr><tr><td> 0x5030000001f0 </td></tr></table>>;color = "red"];
 	{
 		rank = 4;
 		node503000000160;
-	}
-		node503000000190;
-	node503000000100->node503000000190[color = "orange"];
-	node503000000190 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x503000000190 </td></tr> <tr><td> elem = 0</td></tr> <tr><td> NULL </td></tr><tr><td> NULL </td></tr></table>>;color = "red"];
-	{
-		rank = 4;
-		node503000000190;
-	}
-		node503000000130;
-	node503000000040->node503000000130[color = "orange"];
-	node503000000130 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x503000000130 </td></tr> <tr><td> elem = 7</td></tr> <tr><td> 0x5030000001c0 </td></tr><tr><td> 0x5030000001f0 </td></tr></table>>;color = "red"];
-	{
-		rank = 3;
-		node503000000130;
 	}
 		node5030000001c0;
-	node503000000130->node5030000001c0[color = "orange"];
+	node503000000160->node5030000001c0[color = "orange"];
 	node5030000001c0 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x5030000001c0 </td></tr> <tr><td> elem = 0</td></tr> <tr><td> NULL </td></tr><tr><td> NULL </td></tr></table>>;color = "red"];
 	{
-		rank = 4;
+		rank = 5;
 		node5030000001c0;
 	}
 		node5030000001f0;
-	node503000000130->node5030000001f0[color = "orange"];
+	node503000000160->node5030000001f0[color = "orange"];
 	node5030000001f0 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x5030000001f0 </td></tr> <tr><td> elem = 0</td></tr> <tr><td> NULL </td></tr><tr><td> NULL </td></tr></table>>;color = "red"];
 	{
-		rank = 4;
+		rank = 5;
 		node5030000001f0;
 	}
+		node503000000190;
+	node5030000000a0->node503000000190[color = "orange"];
+	node503000000190 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x503000000190 </td></tr> <tr><td> elem = 7</td></tr> <tr><td> 0x503000000220 </td></tr><tr><td> 0x503000000250 </td></tr></table>>;color = "red"];
+	{
+		rank = 4;
+		node503000000190;
+	}
+		node503000000220;
+	node503000000190->node503000000220[color = "orange"];
+	node503000000220 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x503000000220 </td></tr> <tr><td> elem = 0</td></tr> <tr><td> NULL </td></tr><tr><td> NULL </td></tr></table>>;color = "red"];
+	{
+		rank = 5;
+		node503000000220;
+	}
+		node503000000250;
+	node503000000190->node503000000250[color = "orange"];
+	node503000000250 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x503000000250 </td></tr> <tr><td> elem = 0</td></tr> <tr><td> NULL </td></tr><tr><td> NULL </td></tr></table>>;color = "red"];
+	{
+		rank = 5;
+		node503000000250;
+	}
+		node5030000000d0;
+	node503000000040->node5030000000d0[color = "orange"];
+	node5030000000d0 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x5030000000d0 </td></tr> <tr><td> elem = 20</td></tr> <tr><td> 0x503000000100 </td></tr><tr><td> 0x503000000130 </td></tr></table>>;color = "red"];
+	{
+		rank = 3;
+		node5030000000d0;
+	}
+		node503000000100;
+	node5030000000d0->node503000000100[color = "orange"];
+	node503000000100 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x503000000100 </td></tr> <tr><td> elem = 15</td></tr> <tr><td> 0x503000000280 </td></tr><tr><td> 0x5030000002b0 </td></tr></table>>;color = "red"];
+	{
+		rank = 4;
+		node503000000100;
+	}
+		node503000000280;
+	node503000000100->node503000000280[color = "orange"];
+	node503000000280 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x503000000280 </td></tr> <tr><td> elem = 0</td></tr> <tr><td> NULL </td></tr><tr><td> NULL </td></tr></table>>;color = "red"];
+	{
+		rank = 5;
+		node503000000280;
+	}
+		node5030000002b0;
+	node503000000100->node5030000002b0[color = "orange"];
+	node5030000002b0 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x5030000002b0 </td></tr> <tr><td> elem = 0</td></tr> <tr><td> NULL </td></tr><tr><td> NULL </td></tr></table>>;color = "red"];
+	{
+		rank = 5;
+		node5030000002b0;
+	}
+		node503000000130;
+	node5030000000d0->node503000000130[color = "orange"];
+	node503000000130 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x503000000130 </td></tr> <tr><td> elem = 0</td></tr> <tr><td> NULL </td></tr><tr><td> NULL </td></tr></table>>;color = "red"];
+	{
+		rank = 4;
+		node503000000130;
+	}
 		node503000000070;
-	node73848bc00020->node503000000070[color = "orange"];
-	node503000000070 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x503000000070 </td></tr> <tr><td> elem = 20</td></tr> <tr><td> 0x5030000000a0 </td></tr><tr><td> 0x5030000000d0 </td></tr></table>>;color = "red"];
+	node7af44e200020->node503000000070[color = "orange"];
+	node503000000070 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x503000000070 </td></tr> <tr><td> elem = 0</td></tr> <tr><td> NULL </td></tr><tr><td> NULL </td></tr></table>>;color = "red"];
 	{
 		rank = 2;
 		node503000000070;
-	}
-		node5030000000a0;
-	node503000000070->node5030000000a0[color = "orange"];
-	node5030000000a0 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x5030000000a0 </td></tr> <tr><td> elem = 15</td></tr> <tr><td> 0x503000000220 </td></tr><tr><td> 0x503000000250 </td></tr></table>>;color = "red"];
-	{
-		rank = 3;
-		node5030000000a0;
-	}
-		node503000000220;
-	node5030000000a0->node503000000220[color = "orange"];
-	node503000000220 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x503000000220 </td></tr> <tr><td> elem = 0</td></tr> <tr><td> NULL </td></tr><tr><td> NULL </td></tr></table>>;color = "red"];
-	{
-		rank = 4;
-		node503000000220;
-	}
-		node503000000250;
-	node5030000000a0->node503000000250[color = "orange"];
-	node503000000250 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x503000000250 </td></tr> <tr><td> elem = 0</td></tr> <tr><td> NULL </td></tr><tr><td> NULL </td></tr></table>>;color = "red"];
-	{
-		rank = 4;
-		node503000000250;
-	}
-		node5030000000d0;
-	node503000000070->node5030000000d0[color = "orange"];
-	node5030000000d0 [shape="plain"; style ="filled"; fillcolor ="azure3"; label = <<table><tr><td> 0x5030000000d0 </td></tr> <tr><td> elem = 0</td></tr> <tr><td> NULL </td></tr><tr><td> NULL </td></tr></table>>;color = "red"];
-	{
-		rank = 3;
-		node5030000000d0;
 	}
 }

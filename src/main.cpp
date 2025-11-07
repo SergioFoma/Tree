@@ -1,28 +1,33 @@
 #include <stdio.h>
 
 #include "tree.h"
+#include "treeDump.h"
 
 int main(){
-    node_t node_1 = {};
 
-    initNode( &node_1, 10 );
+    tree_t tree = {};
 
-    insertNode( &node_1, 20 );
-    insertNode( &node_1, 5 );
-    insertNode( &node_1, 3 );
-    insertNode( &node_1, 7 );
-    insertNode( &node_1, 15 );
+    initTree( &tree );
 
-    printNode( &node_1 );
+    insertNode( &tree, 10 );
+    insertNode( &tree, 20 );
+    insertNode( &tree, 5 );
+    insertNode( &tree, 3 );
+    insertNode( &tree, 7 );
+    insertNode( &tree, 15 );
+
+    printNode( &tree );
     printf( "\n" );
 
-    dumpTree( &node_1 );
+    dumpTree( &tree );
 
     printf( "\nThe sorted tree:\n\n" );
-    printTheSortedTree( &node_1 );
+    printTheSortedTree( &tree );
     printf( "\n" );
 
-    destroyNode( &node_1 );
+    dumpTree( &tree );
+
+    destroyTree( &tree );
 
     return 0;
 }

@@ -1,11 +1,13 @@
 #ifndef H_TREE
-#define H_TEE
+#define H_TREE
+
+#include <limits.h>
 
 typedef int treeElem_t;
 #define treeValueFormat "%d"
+#define maxTreeValue INT_MAX
 
 const size_t oneStruct = 1;
-static int firstRank   = 1;
 
 enum treeErrors {
     CORRECT_TREE        = 0,
@@ -20,9 +22,13 @@ struct node_t {
     node_t* right;
 };
 
+typedef node_t tree_t;
+
 void printNode( const node_t* node );
 
 void printTheSortedTree( const node_t* node );
+
+treeErrors initTree( tree_t* tree );
 
 treeErrors initNode( node_t* node, treeElem_t element );
 
@@ -30,12 +36,6 @@ treeErrors insertNode( node_t* root, treeElem_t element );
 
 void destroyNode( node_t* node );
 
-treeErrors dumpTree( node_t* node );
-
-void dumpNode( node_t* node, int rank, FILE* treeFile );
-
-static void printNodeInFile( const node_t* node, FILE* fileForWrite );
-
-static void printTheSortedTreeInFile( const node_t* node, FILE* fileForPrint );
+void destroyTree( tree_t* node );
 
 #endif
