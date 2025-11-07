@@ -23,21 +23,25 @@ struct node_t {
 };
 
 struct tree_t{
-    node_t rootTree;
+    node_t* rootTree;
 };
 
-void printNode( const node_t* node );
+void printNode( const node_t* tree );
 
-void printTheSortedTree( const node_t* node );
+void printTree( const tree_t* tree );
+
+void printTheSortedNode( const node_t* tree );
+
+void printTheSortedTree( const tree_t* tree );
 
 treeErrors initTree( tree_t* tree );
 
-treeErrors initNode( node_t* node, treeElem_t element );
+treeErrors initNode( node_t** node, treeElem_t element );
 
-treeErrors insertNode( node_t* root, treeElem_t element );
+treeErrors insertNode( tree_t* root, treeElem_t element );
 
 void destroyNode( node_t* node );
 
-void destroyTree( node_t* node );
+void destroyTree( tree_t* node );
 
 #endif

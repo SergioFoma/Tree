@@ -5,6 +5,6 @@
 
 void dumpNode( node_t* node, int rank, FILE* treeFile );
 
-treeErrors dumpTree( node_t* node );
+treeErrors dumpTree( tree_t* node );
 
 #endif
