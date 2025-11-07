@@ -24,7 +24,7 @@ void printNode( const node_t* node );
 
 void printTheSortedTree( const node_t* node );
 
-node_t* initNode( treeElem_t element );
+treeErrors initNode( node_t* node, treeElem_t element );
 
 treeErrors insertNode( node_t* root, treeElem_t element );
 

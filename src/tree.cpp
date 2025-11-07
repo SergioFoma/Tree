@@ -10,10 +10,10 @@ void printNode( const node_t* node ){
     printf( "(" );
     printf( treeValueFormat " ", node->data );
 
-    if( (node->left)->left && (node->left)->right ){
+    if( node->left && (node->left)->left && (node->left)->right ){
         printNode( node->left );
     }
-    if( (node->right)->left && (node->right)->right ){
+    if( node->right && (node->right)->left && (node->right)->right ){
         printNode( node->right );
     }
 
@@ -23,37 +23,38 @@ void printNode( const node_t* node ){
 void printTheSortedTree( const node_t* node ){
     assert( node );
 
-    if( (node->left)->left && (node->left)->right ){
+    if( node->left && (node->left)->left && (node->left)->right ){
         printTheSortedTree( node->left );
     }
 
     printf( treeValueFormat " ", node->data );
 
-    if( (node->right)->left && (node->right)->right ){
+    if( node->right && (node->right)->left && (node->right)->right ){
         printTheSortedTree( node->right );
     }
 }
 
-node_t* initNode( treeElem_t element ){
+treeErrors initNode( node_t* node, treeElem_t element ){
+    assert( node );
 
-    node_t* node = (node_t*)calloc( oneStruct, sizeof( node_t ) );
+    /*node_t* node = (node_t*)calloc( oneStruct, sizeof( node_t ) );
     if( node == NULL ){
         return NULL;
-    }
+    }*/
 
     node->data = element;
 
     node->left = (node_t*)calloc( oneStruct, sizeof( node_t ) );
     if( node->left == NULL ){
-        return NULL;
+        return NOT_ENOUGH_MEMORY;
     }
 
     node->right = (node_t*)calloc( oneStruct, sizeof( node_t ) );
     if( node->right == NULL ){
-        return NULL;
+        return NOT_ENOUGH_MEMORY;
     }
 
-    return node;
+    return CORRECT_TREE;
 }
 
 treeErrors insertNode( node_t* root, treeElem_t element ){
@@ -71,29 +72,31 @@ treeErrors insertNode( node_t* root, treeElem_t element ){
         }
     }
 
-    *(nodePtr) = initNode( element );
+    initNode( *(nodePtr), element );
 
     return CORRECT_TREE;
-
 }
 
 void destroyNode( node_t* node ){
     assert( node );
 
-    //printf( "\n\nnode = %p\nData = "  treeValueFormat "\nleft prt = %p\nright ptr = %p\n", node, node->data, node->left, node->right );
+    printf( "\n\nnode = %p\nData = "  treeValueFormat "\nleft prt = %p\nright ptr = %p\n", node, node->data, node->left, node->right );
 
     node->data = ( treeElem_t )0;
 
     if( node->left  ){
         destroyNode( node->left );
-    }
-    if( node->right ){
-        destroyNode( node->right );
+        printf( "\nnode %p befor delete\n", node->left );
+        free( node->left );
+        node->left = NULL;
     }
 
-    //printf( "\nnode %p befor delete\n", node );
-    free( node );
-    node = NULL;
+    if( node->right ){
+        destroyNode( node->right );
+        printf( "\nnode %p befor delete\n", node->right );
+        free( node->right );
+        node->right= NULL;
+    }
 }
 
 void dumpNode( node_t* node, int rank, FILE* treeFile ){
@@ -104,14 +107,14 @@ void dumpNode( node_t* node, int rank, FILE* treeFile ){
                         "<<table><tr><td> %p </td></tr> <tr><td> elem = " treeValueFormat "</td></tr> ",
                         ( unsigned long )node, node, node->data  );
 
-    if( node->left != NULL ){
+    if( node->left ){
         fprintf( treeFile, "<tr><td> %p </td></tr>", node->left );
     }
     else{
         fprintf( treeFile, "<tr><td> NULL </td></tr>" );
     }
 
-    if( node->right != NULL ){
+    if( node->right ){
         fprintf( treeFile, "<tr><td> %p </td></tr>", node->right );
     }
     else{
@@ -198,10 +201,10 @@ static void printNodeInFile( const node_t* node, FILE* fileForPrint ){
     fprintf( fileForPrint, "(" );
     fprintf( fileForPrint, treeValueFormat " ", node->data );
 
-    if( (node->left)->left && (node->left)->right ){
+    if( node->left && (node->left)->left && (node->left)->right ){
         printNodeInFile( node->left, fileForPrint);
     }
-    if( (node->right)->left && (node->right)->right ){
+    if( node->right && (node->right)->left && (node->right)->right ){
         printNodeInFile( node->right, fileForPrint );
     }
 
@@ -212,13 +215,13 @@ static void printTheSortedTreeInFile( const node_t* node, FILE* fileForPrint ){
     assert( node );
     assert( fileForPrint );
 
-    if( (node->left)->left && (node->left)->right ){
+    if( node->left && (node->left)->left && (node->left)->right ){
         printTheSortedTreeInFile( node->left, fileForPrint);
     }
 
     fprintf( fileForPrint, treeValueFormat " ", node->data );
 
-    if( (node->right)->left && (node->right)->right ){
+    if( node->right && (node->right)->left && (node->right)->right ){
         printTheSortedTreeInFile( node->right, fileForPrint);
     }
 }
