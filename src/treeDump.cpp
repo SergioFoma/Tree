@@ -108,8 +108,7 @@ static void printNodeInFile( const node_t* node, FILE* fileForPrint ){
     assert( node );
     assert( fileForPrint );
 
-    fprintf( fileForPrint, "(" );
-    fprintf( fileForPrint, treeValueFormat " ", node->data );
+    fprintf( fileForPrint, "(" treeValueFormat " ", node->data );
 
     if( node->left && (node->left)->left && (node->left)->right ){
         printNodeInFile( node->left, fileForPrint);

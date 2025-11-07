@@ -22,7 +22,9 @@ struct node_t {
     node_t* right;
 };
 
-typedef node_t tree_t;
+struct tree_t{
+    node_t rootTree;
+};
 
 void printNode( const node_t* node );
 
@@ -36,6 +38,6 @@ treeErrors insertNode( node_t* root, treeElem_t element );
 
 void destroyNode( node_t* node );
 
-void destroyTree( tree_t* node );
+void destroyTree( node_t* node );
 
 #endif

@@ -38,6 +38,7 @@ treeErrors initNode( node_t* node, treeElem_t element ){
 
     node->data = element;
 
+
     node->left = (node_t*)calloc( oneStruct, sizeof( node_t ) );
     if( node->left == NULL ){
         return NOT_ENOUGH_MEMORY;
@@ -54,7 +55,7 @@ treeErrors initNode( node_t* node, treeElem_t element ){
 treeErrors initTree( tree_t* tree ){
     assert( tree );
 
-    treeErrors errorWithInitialization = initNode( tree, maxTreeValue );
+    treeErrors errorWithInitialization = initNode( &(tree->rootTree), maxTreeValue );
 
     if( errorWithInitialization != CORRECT_TREE ){
         return errorWithInitialization;
@@ -102,7 +103,7 @@ void destroyNode( node_t* node ){
     free( node );
 }
 
-void destroyTree( tree_t* tree ){
+void destroyTree( node_t* tree ){
     if( tree == NULL ){
         return ;
     }

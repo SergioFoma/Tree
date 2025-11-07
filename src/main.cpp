@@ -9,25 +9,25 @@ int main(){
 
     initTree( &tree );
 
-    insertNode( &tree, 10 );
-    insertNode( &tree, 20 );
-    insertNode( &tree, 5 );
-    insertNode( &tree, 3 );
-    insertNode( &tree, 7 );
-    insertNode( &tree, 15 );
+    insertNode( &tree.rootTree, 10 );
+    insertNode( &tree.rootTree, 20 );
+    insertNode( &tree.rootTree, 5 );
+    insertNode( &tree.rootTree, 3 );
+    insertNode( &tree.rootTree, 7 );
+    insertNode( &tree.rootTree, 15 );
 
-    printNode( &tree );
+    printNode( &tree.rootTree );
     printf( "\n" );
 
-    dumpTree( &tree );
+    dumpTree( &tree.rootTree );
 
     printf( "\nThe sorted tree:\n\n" );
-    printTheSortedTree( &tree );
+    printTheSortedTree( &tree.rootTree );
     printf( "\n" );
 
-    dumpTree( &tree );
+    dumpTree( &tree.rootTree );
 
-    destroyTree( &tree );
+    destroyTree( &tree.rootTree );
 
     return 0;
 }
